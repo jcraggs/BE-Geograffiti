@@ -1,0 +1,103 @@
+{
+  "GET /api": {
+    "description": "serves up a json representation of all the available endpoints of the api"
+  },
+  "GET /api/graffiti": {
+    "description": "serves an array of all graffiti data",
+    "exampleResponse": [
+      {
+        "graffiti_id": 1,
+        "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+        "drawing_string": "...",
+        "geo_lat": -2.2394,
+        "geo_long": 53.4857,
+        "votes": 0
+      },
+      {
+        "graffiti_id": 2,
+        "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+        "drawing_string": "...",
+        "geo_lat": -2.1234,
+        "geo_long": 53.4567,
+        "votes": 0
+      }
+    ]
+  },
+  "GET /api/graffiti/:graffiti_id": {
+    "description": "serves an object with the induvidual graffiti information",
+    "exampleResponse": {
+      "graffiti_id": 1,
+      "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+      "drawing_string": "...",
+      "geo_lat": -2.2394,
+      "geo_long": 53.4857,
+      "votes": 0
+    }
+  },
+  "POST /api/graffiti": {
+    "description": "adds a user graffiti to the database with contents dependent on the request body sent",
+    "exampleRequestBody": {
+      "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+      "drawing_string": "...",
+      "geo_lat": -2.2394,
+      "geo_long": 53.4857,
+      "votes": 0
+    }
+  },
+  "PUT /api/graffiti/:graffiti_id": {
+    "description": "serves an updated graffiti object with the 'votes' key changed by the value specified in the request body",
+    "exampleRequestBody": { "votes": 999 },
+    "exampleResponse": {
+      "graffiti_id": 1,
+      "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+      "drawing_string": "...",
+      "geo_lat": -2.2394,
+      "geo_long": 53.4857,
+      "votes": 999
+    }
+  },
+  "DELETE /api/graffiti/:graffiti_id": {
+    "description": "deletes the graffiti by specified graffiti_id and returns an object with a message confirming the action",
+    "exampleResponse": {
+      "Message": "The graffiti with id:{graffiti_id} has been deleted from records"
+    }
+  },
+  "POST /api/users": {
+    "description": "adds a user to the database, done upon sign up, both the firebase_id and username must be unique",
+    "exampleRequestBody": {
+      "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+      "username": "barry trotter",
+      "display_pic_url": "www.barrytrotter.com/profile_pic"
+    }
+  },
+  "GET /api/users/:firebase_id": {
+    "description": "serves an object with the users' information",
+    "exampleResponse": {
+      "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+      "username": "barry trotter",
+      "display_pic_url": "www.barrytrotter.com/profile_pic"
+    }
+  },
+  "PUT /api/users/change_name/:firebase_id": {
+    "description": "serves an updated user object with the 'username' key changed by the value specified in the request body",
+    "exampleRequestBody": { "username": "New Username" },
+    "exampleResponse": {
+      "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+      "username": "New Username",
+      "display_pic_url": "www.barrytrotter.com/profile_pic"
+    }
+  },
+  "PUT /api/users/change_pic/:firebase_id": {
+    "description": "serves an updated user object with the 'display_pic_url' key changed by the value specified in the request body",
+    "exampleRequestBody": { "display_pic_url": "www.newpic.com/new_pic.png" },
+    "exampleResponse": {
+      "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+      "username": "New Username",
+      "display_pic_url": "www.newpic.com/new_pic.png"
+    }
+  },
+  "DELETE /api/users/del/:firebase_id": {
+    "description": "deletes the user by specified user_id, cascade deletes all their drawings and returns an object with a message confirming the action",
+    "exampleResponse": "Message: 'The user profile and graffiti associated with firebase_id = {firebase_id} has been deleted from the database"
+  }
+}
