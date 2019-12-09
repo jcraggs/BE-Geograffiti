@@ -78,7 +78,7 @@
     ]
   },
   "POST /api/users": {
-    "description": "adds a user to the database, done upon sign up, both the firebase_id and username must be unique",
+    "description": "adds a user to the database, done upon sign up, the firebase_id must be unique",
     "exampleRequestBody": {
       "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
       "username": "barry trotter",

@@ -61,7 +61,7 @@ Further information on how to host can be found here: https://stackabuse.com/dep
 | /api/graffiti/:graffiti_id          | PUT     | Serves an updated graffiti object with the 'votes' key changed by the value specified in the request body.                            |
 | /api/graffiti/:graffiti_id          | DELETE  | Serves an object with the specified graffiti information.                                                                             |
 | /api/users                          | GET     | Serves an array of all the users in the database.                                                                                     |
-| /api/users                          | POST    | Adds a user to the database, both the firebase_id and username must be unique.                                                        |
+| /api/users                          | POST    | Adds a user to the database, the firebase_id must be unique.                                                                          |
 | /api/users/:firebase_id             | GET     | Serves an object with the specified users information.                                                                                |
 | /api/users/change_name/:firebase_id | PUT     | Serves an updated user object with the 'username' key changed by the value specified in the request body.                             |
 | /api/users/change_pic/:firebase_id  | PUT     | Serves an updated user object with the 'display_pic_url' key changed by the value specified in the request body.                      |

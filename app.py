@@ -115,7 +115,7 @@ def delete_graffiti(id):
 class User(db.Model):
     firebase_id = db.Column(db.String(), primary_key=True,
                             unique=True, nullable=False)
-    username = db.Column(db.String(), unique=True, nullable=False)
+    username = db.Column(db.String(), unique=False, nullable=False)
     display_pic_url = db.Column(db.String(), unique=False, nullable=False)
 
     def __init__(self, firebase_id, username, display_pic_url):
