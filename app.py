@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from flask_marshmallow import Marshmallow
 import os
 
@@ -14,9 +15,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 # Init ma
 ma = Marshmallow(app)
-
+# Enable CORS for all routes
+CORS(app)
 
 # Graffiti Class/Model
+
+
 class Graffiti(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firebase_id = db.Column(db.String(), db.ForeignKey(

@@ -17,8 +17,7 @@ When starting this project locally run the following commands in the terminal:
 
 1. `pip install env`
 2. `pipenv shell`
-3. `pipenv install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy`
-4. `pipenv install gunicorn`
+3. `pipenv install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy gunicorn flask_cors`
 
 This sets up the local pip environment and installs the required pip modules.
 
