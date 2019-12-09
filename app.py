@@ -47,13 +47,13 @@ graffiti_schema = GraffitiSchema()
 graffitis_schema = GraffitiSchema(many=True)
 
 # Get endpoints.json
-@app.route('/', methods=['GET'])  # by default the method is get
+@app.route('/api', methods=['GET'])  # by default the method is get
 def home():
     """Serves up a json file from the static folder"""
     return app.send_static_file('endpoints.json')
 
 # Create Graffiti
-@app.route('/graffiti', methods=['POST'])
+@app.route('/api/graffiti', methods=['POST'])
 def add_graffiti():
     """ Allows API user to post a new graffiti drawing to DB"""
     firebase_id = request.json['firebase_id']
@@ -70,7 +70,7 @@ def add_graffiti():
     return graffiti_schema.jsonify(new_graffiti)
 
 # Get All Graffiti
-@app.route('/graffiti', methods=['GET'])
+@app.route('/api/graffiti', methods=['GET'])
 def get_graffitis():
     """ Gets all the graffiti drawings in the DB, returns empty array if none found"""
     all_graffiti = Graffiti.query.all()
@@ -78,14 +78,14 @@ def get_graffitis():
     return jsonify(result)
 
 # Get Single Graffiti
-@app.route('/graffiti/<id>', methods=['GET'])
+@app.route('/api/graffiti/<id>', methods=['GET'])
 def get_graffiti(id):
     """ Gets a single graffiti id by its id"""
     single_graffiti = Graffiti.query.get(id)
     return graffiti_schema.jsonify(single_graffiti)
 
 # Update Graffiti votes
-@app.route('/graffiti/<id>', methods=['PUT'])
+@app.route('/api/graffiti/<id>', methods=['PUT'])
 def update_graffiti_votes(id):
     """ Update specified graffiti vote count"""
     graffiti = Graffiti.query.get(id)
@@ -95,7 +95,7 @@ def update_graffiti_votes(id):
     return graffiti_schema.jsonify(graffiti)
 
 # Delete Graffiti
-@app.route('/graffiti/<id>', methods=['DELETE'])
+@app.route('/api/graffiti/<id>', methods=['DELETE'])
 def delete_graffiti(id):
     """ Delete a single graffiti id by its id """
     graffiti = Graffiti.query.get(id)
@@ -109,7 +109,6 @@ def delete_graffiti(id):
 
 
 class User(db.Model):
-    # id = db.Column(db.Integer, primary_key=True)
     firebase_id = db.Column(db.String(), primary_key=True,
                             unique=True, nullable=False)
     username = db.Column(db.String(), unique=True, nullable=False)
@@ -133,7 +132,7 @@ users_schema = UserSchema(many=True)
 
 
 # Create User
-@app.route('/users', methods=['POST'])
+@app.route('/api/users', methods=['POST'])
 def add_user():
     """ Allows API user to post a new user to DB"""
     firebase_id = request.json['firebase_id']
@@ -146,7 +145,7 @@ def add_user():
     return user_schema.jsonify(new_user)
 
 # Get All Users
-@app.route('/users', methods=['GET'])
+@app.route('/api/users', methods=['GET'])
 def get_users():
     """ Gets all the users in the DB, returns empty array if none found"""
     all_users = User.query.all()
@@ -154,7 +153,7 @@ def get_users():
     return jsonify(result)
 
 # Get Single User
-@app.route('/users/<firebase_id>', methods=['GET'])
+@app.route('/api/users/<firebase_id>', methods=['GET'])
 def get_user(firebase_id):
     """ Gets a single user id by their firebase_id"""
     single_user = User.query.filter_by(firebase_id=firebase_id)
@@ -162,7 +161,7 @@ def get_user(firebase_id):
     return jsonify(result[0])
 
 # Update username
-@app.route('/users/change_name/<firebase_id>', methods=['PUT'])
+@app.route('/api/users/change_name/<firebase_id>', methods=['PUT'])
 def update_username(firebase_id):
     """ Update specified user username"""
     user = User.query.filter_by(firebase_id=firebase_id)
@@ -173,7 +172,7 @@ def update_username(firebase_id):
     return jsonify(result)
 
 # Update display_pic_url
-@app.route('/users/change_pic/<firebase_id>', methods=['PUT'])
+@app.route('/api/users/change_pic/<firebase_id>', methods=['PUT'])
 def update_display_pic(firebase_id):
     """ Update specified user display_pic"""
     user = User.query.filter_by(firebase_id=firebase_id)
@@ -185,7 +184,7 @@ def update_display_pic(firebase_id):
 
 
 # Delete User and All user graffiti (Cascade effect)
-@app.route('/users/del/<firebase_id>', methods=['DELETE'])
+@app.route('/api/users/del/<firebase_id>', methods=['DELETE'])
 def delete_user_graffiti(firebase_id):
     """ Delete a single user by their firebase_id and cascade delete all their drawings """
     all_user_graffiti = Graffiti.query.filter_by(
