@@ -8,7 +8,7 @@
       {
         "graffiti_id": 1,
         "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
-        "drawing_string": "...",
+        "drawing_str": "...",
         "geo_lat": -2.2394,
         "geo_long": 53.4857,
         "votes": 0
@@ -16,7 +16,7 @@
       {
         "graffiti_id": 2,
         "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
-        "drawing_string": "...",
+        "drawing_str": "...",
         "geo_lat": -2.1234,
         "geo_long": 53.4567,
         "votes": 0
@@ -28,7 +28,7 @@
     "exampleResponse": {
       "graffiti_id": 1,
       "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
-      "drawing_string": "...",
+      "drawing_str": "...",
       "geo_lat": -2.2394,
       "geo_long": 53.4857,
       "votes": 0
@@ -38,7 +38,7 @@
     "description": "adds a user graffiti to the database with contents dependent on the request body sent",
     "exampleRequestBody": {
       "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
-      "drawing_string": "...",
+      "drawing_str": "...",
       "geo_lat": -2.2394,
       "geo_long": 53.4857,
       "votes": 0
@@ -50,7 +50,7 @@
     "exampleResponse": {
       "graffiti_id": 1,
       "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
-      "drawing_string": "...",
+      "drawing_str": "...",
       "geo_lat": -2.2394,
       "geo_long": 53.4857,
       "votes": 999
