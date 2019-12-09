@@ -62,6 +62,21 @@
       "Message": "The graffiti with id:{graffiti_id} has been deleted from records"
     }
   },
+  "GET /api/users": {
+    "description": "serves an array of all user data",
+    "exampleResponse": [
+      {
+        "firebase_id": "AIzaSyD5JPJ3R9vJX52QpJQAL5ndR0YaGerCyic",
+        "username": "barry trotter",
+        "display_pic_url": "www.barrytrotter.com/profile_pic"
+      },
+      {
+        "firebase_id": "BJabTzE6IQI4S0wKY63RqKRBM6oeQ1ZbHfsDzkd",
+        "username": "lon peasely",
+        "display_pic_url": "www.lonpeasely.com/profile_pic"
+      }
+    ]
+  },
   "POST /api/users": {
     "description": "adds a user to the database, done upon sign up, both the firebase_id and username must be unique",
     "exampleRequestBody": {
