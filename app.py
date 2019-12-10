@@ -191,10 +191,8 @@ def update_display_pic(firebase_id):
 @app.route('/api/users/del/<firebase_id>', methods=['DELETE'])
 def delete_user_graffiti(firebase_id):
     """ Delete a single user by their firebase_id and cascade delete all their drawings """
-    # all_user_graffiti =
     Graffiti.query.filter_by(
         firebase_id=firebase_id).delete()
-    # user =
     User.query.filter_by(firebase_id=firebase_id).delete()
 
     db.session.commit()
