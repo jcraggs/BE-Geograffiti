@@ -29,13 +29,15 @@ class Graffiti(db.Model):
     geo_lat = db.Column(db.Float, unique=False, nullable=False)
     geo_long = db.Column(db.Float, unique=False, nullable=False)
     votes = db.Column(db.Integer, default=0, nullable=False)
+    created_at = db.Column(db.String(), unique=False, nullable=False)
 
-    def __init__(self, firebase_id, drawing_str, geo_lat, geo_long, votes):
+    def __init__(self, firebase_id, drawing_str, geo_lat, geo_long, votes, created_at):
         self.firebase_id = firebase_id
         self.drawing_str = drawing_str
         self.geo_lat = geo_lat
         self.geo_long = geo_long
         self.votes = votes
+        self.created_at = created_at
 
 # Graffiti Schema
 
@@ -43,7 +45,7 @@ class Graffiti(db.Model):
 class GraffitiSchema(ma.Schema):
     class Meta:
         fields = ('id', 'firebase_id', 'drawing_str',
-                  'geo_lat', 'geo_long', 'votes')
+                  'geo_lat', 'geo_long', 'votes', 'created_at')
 
 
 # Init schema
@@ -65,9 +67,10 @@ def add_graffiti():
     geo_lat = request.json['geo_lat']
     geo_long = request.json['geo_long']
     votes = request.json['votes']
+    created_at = request.json['created_at']
 
     new_graffiti = Graffiti(firebase_id, drawing_str, geo_lat,
-                            geo_long, votes)
+                            geo_long, votes, created_at)
 
     db.session.add(new_graffiti)
     db.session.commit()

@@ -11,7 +11,8 @@
         "drawing_str": "...",
         "geo_lat": -2.2394,
         "geo_long": 53.4857,
-        "votes": 0
+        "votes": 0,
+        "created_at": "10/12/2019"
       },
       {
         "graffiti_id": 2,
@@ -19,7 +20,8 @@
         "drawing_str": "...",
         "geo_lat": -2.1234,
         "geo_long": 53.4567,
-        "votes": 0
+        "votes": 0,
+        "created_at": "09/12/2019"
       }
     ]
   },
@@ -31,7 +33,8 @@
       "drawing_str": "...",
       "geo_lat": -2.2394,
       "geo_long": 53.4857,
-      "votes": 0
+      "votes": 0,
+      "created_at": "10/12/2019"
     }
   },
   "POST /api/graffiti": {
@@ -41,7 +44,8 @@
       "drawing_str": "...",
       "geo_lat": -2.2394,
       "geo_long": 53.4857,
-      "votes": 0
+      "votes": 0,
+      "created_at": "10/12/2019"
     }
   },
   "PUT /api/graffiti/:graffiti_id": {
@@ -53,7 +57,8 @@
       "drawing_str": "...",
       "geo_lat": -2.2394,
       "geo_long": 53.4857,
-      "votes": 999
+      "votes": 999,
+      "created_at": "10/12/2019"
     }
   },
   "DELETE /api/graffiti/:graffiti_id": {
