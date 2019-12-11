@@ -2,7 +2,7 @@
 
 ## Project Summary
 
-Back end RESTful API built using python, flask and SQLite. It is hosted here: https://be-geograffiti.herokuapp.com/api
+Back end RESTful API built using python, flask and SQLite. It is hosted here: https://geograffiti.pythonanywhere.com/api
 
 This project was built using the help of the following video tutorial: https://www.youtube.com/watch?v=PTZiDnuC86g
 
