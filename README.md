@@ -27,8 +27,9 @@ When starting this project locally run the following commands in the terminal:
 1. `pip install env`
 2. `pipenv shell`
 3. `pipenv install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy gunicorn flask_cors`
+4. `pip freeze > requirements.txt`
 
-This sets up the local pip environment and installs the required pip modules.
+This sets up the local pip environment and installs the required pip modules. Note that for the app to work you must be in the pipenv shell when you run `python app.py`.
 
 ## Setting up db.sqlite file
 
@@ -42,24 +43,69 @@ If making any significant changes to routing and tables it is likely you will ha
 
 With the project and db.sqlite intialised you can start the local server by running `python app.py` in the terminal.
 
-## Hosting on Heroku
+## Hosting a flask-app on 'PythonAnywhere'
 
 Pre-reqs:
 
-- Heroku Account (https://signup.heroku.com/)
-- Installed Heroku CLI (https://devcenter.heroku.com/articles/heroku-cli)
+- PythonAnywhere Account (https://www.pythonanywhere.com/pricing/) -> click create beginner account
 
-Prior to hosting, if you want to wipe your database, make sure to delete the old db.sqlite file and re-run the commands in the 'Settin up db.sqlite file' section.
+Prior to hosting, if you want to wipe your database, make sure to delete the old db.sqlite file and re-run the commands in the 'Setting up db.sqlite file' section.
 
-1. `pip freeze > requirements.txt`
-2. Create a 'Procfile' in the root directory and populate it with the following plain text: "web: gunicorn app:app"
-3. Log into Heroku and select New -> Create new app
-4. `heroku login -i`
-5. `heroku git:remote -a {name of the heroku app}`
-6. `git push heroku master`
-7. `heroku open`
+1. Log into PythonAnywhere and select "\$Bash" from the 'New consoles/ box
+2. Choose the bash console and once open you will be able to git clone the repository to Python anywhere with: `git clone https://github.com/[git username]/[git project].git`
+3. After cloning the repository into PythonAnywhere select "Web" from the menu tab
 
-Further information on how to host can be found here: https://stackabuse.com/deploying-a-flask-application-to-heroku/
+4. Click Add a new web app, then:
+
+   - Ignore web-app domain name
+   - Select Manual configuration from the web framework
+   - Select your python version, this project was 3.6
+   - Click next again to get PythonAnywhere to generate a template WSGI file for you. This will open your webapp configuration page.
+
+5. Whilst on the configuration page link your source code to the project by editing the source code label in the 'Code' header on the page. The link should be something like '/home/[your_username]/[github_project_name]'
+
+6. Edit the WSGI configuration file. You can access this by clicking on the link next to the "WSGI configuration file:" in your webapp view.
+
+   Once you open the file you will need to comment/delete everything out and instead have the following:
+
+   ```raw
+   import sys
+
+   path = '/home/geograffiti/BE-Geograffiti'
+   if path not in sys.path:
+       sys.path.append(path)
+
+   from app import app as application  # noqa
+   ```
+
+   Note: the "/home/[username]" in the code above specifies your home directory -- the rest should be the directory you uploaded your Flask code to underneath the home directory. So if you just ran "git clone git@github.com/[username]/[git_project_name].git" then you should specify "/home/[username]/[git_project_name]".
+
+   The from "app import app as application" essential renames the app = flask(**name**) within the app.py file to 'application'. This is required for the WSGI file to work.
+
+7. You need to make sure that your app.py file does not have the following code:
+
+   ```raw
+   if __name__ == '__main__':
+   app.run(debug=True)
+   ```
+
+   Whilst this is needed when running locally, it breaks the WSGI file when it comes to hosting on PythonAnywhere. You can edit your app.py file in PythonAnywhere by navigating to the directory of your project which will look something like: "https://www.pythonanywhere.com/user/[your_username]/files/home/[your_username]/[your_git_project_name]" and clicking on the edit icon next to the file name.
+
+8. Set up your virtual environment by navigating back to the bash console as you did in step 1. Enter the following:
+
+   - `mkvirtualenv myvirtualenv --python=/usr/bin/python3.6`
+
+   Whilst still in the same console session run the following:
+
+   - `pip install install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy gunicorn flask_cors`
+
+   Further info on setting up a virtual env can be found here: https://help.pythonanywhere.com/pages/Virtualenvs/
+
+9. Under the settings header on the web-app configuration page make sure to enable 'Force HTTPS'.
+
+10. Finally click reload at the top of the web-app configuration page.
+
+NOTE: PythonAnywhere web applications will timeout if you dont log in to the website at least once every 3 months.
 
 ## Current endpoints
 
