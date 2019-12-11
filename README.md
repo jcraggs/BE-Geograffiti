@@ -52,7 +52,7 @@ Pre-reqs:
 
 Prior to hosting, if you want to wipe your database, make sure to delete the old db.sqlite file and re-run the commands in the 'Setting up db.sqlite file' section.
 
-1. Log into PythonAnywhere and select "\$Bash" from the 'New consoles/ box
+1. Log into PythonAnywhere and select "\$Bash" from the 'New consoles' box
 2. Choose the bash console and once open you will be able to git clone the repository to Python anywhere with: `git clone https://github.com/[git username]/[git project].git`
 3. After cloning the repository into PythonAnywhere select "Web" from the menu tab
 
