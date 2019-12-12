@@ -3,7 +3,8 @@
 ## Project Summary
 
 Back end RESTful API built using python, flask and SQLite. It is hosted here: https://geograffiti.pythonanywhere.com/api
-The repository of front-end interacting with the hosted database built by this application can be found here: https://github.com/NaomiM24/GraffitiAR-fe
+The repository of front-end interacting with the hosted database built by this application can be found here: https://github.com/NaomiM24/geograffiti
+The hosted front-end is here: https://geograffiti.netlify.com/
 
 This project was built using the help of the following video tutorial: https://www.youtube.com/watch?v=PTZiDnuC86g
 
@@ -127,7 +128,7 @@ NOTE: PythonAnywhere web applications will timeout if you dont log in to the web
 
 ## Project Team
 
-- [AJINK14](https://github.com/AJINK13)
+- [AJINK13](https://github.com/AJINK13)
 - [HAKeyes14](https://github.com/HAKeyes14)
 - [jcraggs](https://github.com/jcraggs)
 - [NaomiM24](https://github.com/NaomiM24)
