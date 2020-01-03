@@ -5,6 +5,7 @@
 Back end RESTful API built using python, flask and SQLite. It is hosted here: https://geograffiti.pythonanywhere.com/api
 
 The repository of the front-end interacting with the hosted database, built by this application, can be found here: https://github.com/NaomiM24/geograffiti
+
 The hosted front-end is here: https://geograffiti.netlify.com/
 
 This project was built using the help of the following video tutorial: https://www.youtube.com/watch?v=PTZiDnuC86g
