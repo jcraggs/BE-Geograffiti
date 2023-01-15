@@ -3,9 +3,7 @@
 ## Project Summary
 
 Back end RESTful API built using python, flask and SQLite. It is hosted here: https://geograffiti.pythonanywhere.com/api
-
-The repository of the front-end interacting with the hosted database, built by this application, can be found here: https://github.com/NaomiM24/geograffiti
-
+The repository of front-end interacting with the hosted database built by this application can be found here: https://github.com/NaomiM24/geograffiti
 The hosted front-end is here: https://geograffiti.netlify.com/
 
 This project was built using the help of the following video tutorial: https://www.youtube.com/watch?v=PTZiDnuC86g
@@ -56,7 +54,7 @@ Pre-reqs:
 Prior to hosting, if you want to wipe your database, make sure to delete the old db.sqlite file and re-run the commands in the 'Setting up db.sqlite file' section.
 
 1. Log into PythonAnywhere and select "\$Bash" from the 'New consoles' box
-2. Choose the bash console and once open you will be able to git clone the repository to Python anywhere with: `git clone https://github.com/[git username]/[git project].git`
+2. Choose the bash console and once open you will be able to git clone the repository to Python anywhere with: `git clone https://github.com/[git username]/[git project].git` (keep this window open as you'll be pasting further commands in step 8).
 3. After cloning the repository into PythonAnywhere select "Web" from the menu tab
 
 4. Click Add a new web app, then:
@@ -105,9 +103,11 @@ Prior to hosting, if you want to wipe your database, make sure to delete the old
 
    Further info on setting up a virtual env can be found here: https://help.pythonanywhere.com/pages/Virtualenvs/
 
-9. Under the settings header on the web-app configuration page make sure to enable 'Force HTTPS'.
+9. Go to the Web tab, and in the Virtualenv section, enter the path: `/home/[your username]/.virtualenvs/myvirtualenv` replacing the username for your own.
 
-10. Finally click reload at the top of the web-app configuration page.
+10. Under the settings header on the web-app configuration page make sure to enable 'Force HTTPS'.
+
+11. Finally click reload at the top of the web-app configuration page.
 
 NOTE: PythonAnywhere web applications will timeout if you dont log in to the website at least once every 3 months.
 
